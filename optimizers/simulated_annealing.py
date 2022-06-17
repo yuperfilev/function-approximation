@@ -1,5 +1,5 @@
 from math import exp
-from numpy.random import uniform, randint
+from random import uniform, randint
 from functionals.functional import Functional
 from functions.abcfunction import Function
 from mathtypes.linalg import vector
@@ -34,7 +34,7 @@ class SimulatedAnnealing(Optimizer):
         decrease_function = self.decreaseTemperature(temperature)
         k = 0
         while k < METHOD_ITERATIONS and y1 > EPS:
-            random_index = randint(0, parameters.length)
+            random_index = randint(0, parameters.length - 1)
             parameters[random_index] = uniform(0, 1) * (maximum_parameters[random_index] -
                                                         minimum_parameters[random_index]) + minimum_parameters[random_index]
             y2 = objective.value(function.bind(parameters))
